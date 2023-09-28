@@ -1,1 +1,20 @@
+https://minikube.sigs.k8s.io/docs/start/
+
+#Start your cluster
+minikube start
+
+#Halt the cluster
+minikube stop 
+
+#Add a nodes to the give cluster config, and starts it.
+minikube node add --worker
+
+minikube node delete
+
+minikube node list
+
+minikube node stop 
+
+minikube node start
+
 
