@@ -6,7 +6,7 @@ kubectl run --image=nginx my-new-pod --dry-run=client -o=yaml > my-new-pod.yaml
 
 kubectl apply -f pods/pod-nginx.yaml
 
-#Crea un pod busybox y nos quedamos por linea de comandos
+#Crea un pod busybox y nos quedamos por linea de comandos se destruye cuando salimos
 kubectl run curl-test -it --image=radial/busyboxplus:curl --rm
 
 #Podemos buscar por nombre
