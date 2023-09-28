@@ -3,6 +3,15 @@ https://minikube.sigs.k8s.io/docs/start/
 #Start your cluster
 minikube start
 
+#show clusters 
+kubectl config get-contexts
+kctx
+
+#To change minikube 3 ways
+kubectl config use-contexts minikube
+k config use-context minikube
+kctx minikube
+
 #Halt the cluster
 minikube stop 
 
