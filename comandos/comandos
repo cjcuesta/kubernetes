@@ -1,8 +1,26 @@
 https://killercoda.com/login
 
+##Para ver tanto los cluster configurados. Tanto a GKE como a Minikube
+kubectl config get-contexts
+
+##para cambiarme al cluster minikube
+k config use-context minikube
+
+##para cambiarme al contexto GKE
+k config use-context gke_practica-keep-carlosjulio_europe-west1-b_cluster-cj 
+
+#Muestra los nodos del cluster en el que se este conectado 
+kubectl get nodes
+k get nodes
+
+#muestra los PODs del namespace donde este
+k get pods
+
+#muestra los PODs de todos los namespaces
+k get pods -A
+
 #Crea un esqueleto yaml.
 kubectl run --image=nginx my-new-pod --dry-run=client -o=yaml > my-new-pod.yaml 
-
 
 kubectl apply -f pods/pod-nginx.yaml
 
