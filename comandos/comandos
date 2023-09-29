@@ -19,7 +19,7 @@ k get pods
 #muestra los PODs de todos los namespaces
 k get pods -A
 
-#Crea un esqueleto yaml.
+#Crea un esqueleto yaml pero no crea el pod
 kubectl run --image=nginx my-new-pod --dry-run=client -o=yaml > my-new-pod.yaml 
 kubectl run pod-nginx --image=nginx:1.14.2  --dry-run=client -o=yaml > pods/pod-nginx.yaml 
 
@@ -32,7 +32,18 @@ kubectl run pod-nginx --image=nginx:1.14.2  --dry-run=client -o=yaml > pods/pod-
 ##  dnsPolicy: ClusterFirst
 ##  restartPolicy: Always
 ##   status: {}
+
+##Luego se aplican los cambios realizados
 kubectl apply -f pods/pod-nginx.yaml
+
+##args    equivale a CMD en docker
+##command equivale a ENTRYPOIN en docker
+
+##Crea el esqueleto de un POD los que hay despues del -- lo envia al CMD
+kubectl run nginx --image=nginx --dry-run=client -o=yaml -- echo "HOla mundo" > pod-nginx-spec.yaml
+
+##Con la opcion --command Crea el esqueleto de un POD lo que hay despues del -- lo envia al ENTRYPOINT
+kubectl run nginx --image=nginx --dry-run=client -o=yaml --command -- echo "HOla mundo" > pod-nginx-spec.yaml
 
 #me puedo conectar al POD
 k exec pod-nginx -it -- bash
