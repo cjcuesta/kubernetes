@@ -19,15 +19,30 @@ k get pods
 #muestra los PODs de todos los namespaces
 k get pods -A
 
-#Para crear un Pod directamente 
 #Crea un esqueleto yaml.
-kubectl run pod-nginx --image=nginx  --dry-run=client -o=yaml > pods/pod-nginx.yaml 
+kubectl run --image=nginx my-new-pod --dry-run=client -o=yaml > my-new-pod.yaml 
+kubectl run pod-nginx --image=nginx:1.14.2  --dry-run=client -o=yaml > pods/pod-nginx.yaml 
 
+##Se quita esto
+##  creationTimestamp: null
+##  labels:
+##    run: pod-nginx
+##    ..
+##  resources: {}
+##  dnsPolicy: ClusterFirst
+##  restartPolicy: Always
+##   status: {}
 kubectl apply -f pods/pod-nginx.yaml
 
+#me puedo conectar al POD
+k exec pod-nginx -it -- bash
 
+#Para crear un Pod directamente 
 #Crea un pod busybox y nos quedamos por linea de comandos se destruye cuando salimos
 kubectl run curl-test -it --image=radial/busyboxplus:curl --rm
+
+##Si se pierde la consola se puede ingresar de la siguiente manera
+k exec curl-test -it -- sh
 
 #Podemos buscar por nombre
 nslookup nginx 
