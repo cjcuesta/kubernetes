@@ -48,6 +48,15 @@ kubectl run nginx --image=nginx --dry-run=client -o=yaml --command -- echo "HOla
 ##Con la opcion --env  Crea el esqueleto de un POD con variables de ambiente.
 kubectl run nginx --image=eedugon/flask --dry-run=client -o=yaml --env REDIS_HOST=redis > pod-nginx-spec.yaml
 
+##Lo anterior se puede combinar con las opciones ENTRYPOINT ó CMD pero no las 3 a la vez
+kubectl run nginx --image=eedugon/flask --dry-run=client -o=yaml --env REDIS_HOST=redis -- echo "HOla mundo" > pod-nginx-spec.yaml 
+
+kubectl run nginx --image=eedugon/flask --dry-run=client -o=yaml --env REDIS_HOST=redis --command -- echo -c "Hola Mundo" > pod-nginx-spec.yaml
+
+
+
+
+
 #me puedo conectar al POD
 k exec pod-nginx -it -- bash
 
