@@ -8,6 +8,7 @@
 # para solucionar problemas lo primero es ir al namespace y mirar si existe el servicio
 # luego mirar la parte de los endpoinds del servios si estan los endpoints 
 # k describe service nginx-headless
+
 apiVersion: v1
 kind: Service
 metadata:
@@ -21,4 +22,3 @@ spec:
   - protocol: TCP
     port: 80
     targetPort: 80
-
