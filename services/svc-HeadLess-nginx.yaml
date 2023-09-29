@@ -1,1 +1,24 @@
+#Para probarlo 
+#primero se hace un deployment: k apply -f deployments/dep-nginx.yaml
+#segundo se utiliza busybox:    kubectl run curl-test -it --image=radial/busyboxplus:curl --rm
+# En la linea de comandos se 
+# llama al Services por su nombre: nslookup nginx-headless esto devuelve las dos ip
+# Adicional aparec lo siguiente nginx-headless.default.svc.cluster.local
+#                               nombre_servicio.namespace..svc.cluster.local
+# para solucionar problemas lo primero es ir al namespace y mirar si existe el servicio
+# luego mirar la parte de los endpoinds del servios si estan los endpoints 
+# k describe service nginx-headless
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx-headless
+spec:
+  type: ClusterIP
+  clusterIP: None
+  selector:
+    app: nginx
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 80
 
