@@ -53,9 +53,14 @@ kubectl run nginx --image=eedugon/flask --dry-run=client -o=yaml --env REDIS_HOS
 
 kubectl run nginx --image=eedugon/flask --dry-run=client -o=yaml --env REDIS_HOST=redis --command -- echo -c "Hola Mundo" > pod-nginx-spec.yaml
 
+##Crear un Deployment
+kubectl create deployment dep-my-first --image=nginx --dry-run=client -o=yaml > dep-my-first.yaml
 
+##Se aplica el deployment
+kubecetl apply -f dep-my-first.yaml 
 
-
+##se crea el servicio basado en el deployment ejecutado
+kubectl expose deployment dep-my-first --type=IPCluster --port=8080 --dry-run=client -o=yaml > svc-my-first.yaml
 
 #me puedo conectar al POD
 k exec pod-nginx -it -- bash
