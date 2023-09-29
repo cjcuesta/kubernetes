@@ -19,6 +19,12 @@ k get pods
 #muestra los PODs de todos los namespaces
 k get pods -A
 
+#muestra solo el nombre del pod
+k get pod nombre-pod 
+
+#Muestra la definicion del pod aunque no se pueda modificar
+k get pod nombre-pod -o=yaml
+
 #Crea un esqueleto yaml pero no crea el pod
 kubectl run --image=nginx my-new-pod --dry-run=client -o=yaml > my-new-pod.yaml 
 kubectl run pod-nginx --image=nginx:1.14.2  --dry-run=client -o=yaml > pods/pod-nginx.yaml 
