@@ -43,7 +43,7 @@ kubectl run pod-nginx --image=nginx:1.14.2  --dry-run=client -o=yaml > pods/pod-
 kubectl apply -f pods/pod-nginx.yaml
 
 ##args    equivale a CMD en docker
-##command equivale a ENTRYPOIN en docker
+##command equivale a ENTRYPOINT en docker
 
 ##Crea el esqueleto de un POD los que hay despues del -- lo envia al CMD
 kubectl run nginx --image=nginx --dry-run=client -o=yaml -- echo "HOla mundo" > pod-nginx-spec.yaml
@@ -84,6 +84,46 @@ kubecetl apply -f dep-my-first.yaml
 ##se crea el servicio basado en el deployment ejecutado
 kubectl expose deployment dep-my-first --type=IPCluster --port=8080 --dry-run=client -o=yaml > svc-my-first.yaml
 
-#Crea un backup de varios deploymenst que se esten ejectuando
+#Crea un backup de varios deployments que se esten ejectuando
 #lo guarda y puede ser ejecutado en otro cluster. 
 kubectl get deployment1 deploymen2 deploymen3 -o=yaml > dep-backup.yaml
+
+#Crear config maps
+1 Se pueden crear desde una archivo yaml 
+2 Se pueden crear desde un archivo normal
+3 Se puede crear desde un directorio completo
+4 Se puede crear desde un archivo con datos clave=valor
+5 Se puede crear con valores literales. Más para secrets que config-map
+
+1 k apply -f my-config.yml
+2 k create configmap my-config-file --from-file=/myruta/myarchivo.conf
+3 k create configmap my-config-dir --from-file=/myruta/
+4 k create configmap my-config-env --from-env-file=/myruta/my_env.ext
+5 k create configmap my-config-lit --from-literal clave1=valor1 clave2=valor2 
+
+#para ver los configmap 
+k get configmaps
+k get configmaps myconfig-file -o=yaml
+k describe configmap myconfig-file 
+
+#abreviación cm en lugar de configmaps
+k get cm 
+k get cm  myconfig-file -o=yaml
+k describe cm myconfig-file 
+
+#para ver la ayuda
+k create configmap --help
+
+#Para borrar 
+k delete my-config-file
+k delete my-config-file my-config-dir my-config-env
+
+Todos quedan con clave el nombre del archivo que están leyendo
+Si se desea que guardar en un yaml
+k create configmap my-config-file --from-file=/myruta/myarchivo.conf --dry-run=client -o yaml
+k create configmap my-config-dir --from-file=/myruta/ --dry-run=cliente -o yaml
+k create configmap my-config-env --from-env-file=/myruta/my_env.ext --dry-run=client-o
+
+Si se desea que la llave no quede con el nombre del archivo
+k create configmap my-config-file --from-file=MICLAVE=/myruta/myarchivo.conf
+
