@@ -35,8 +35,11 @@ kubectl config use-contexts minikube
 k config use-context minikube
 kctx minikube
 
-#Halt the cluster
+#Halt the cluster para ahorrar recurso
 minikube stop 
+
+#para averiguar la ip de minikube
+minikube ip
 
 #Add a nodes to the give cluster config, and starts it.
 minikube node add --worker
