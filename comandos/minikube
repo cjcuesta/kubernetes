@@ -26,6 +26,16 @@ sudo dpkg --purge minikube
 #Start your cluster
 minikube start
 
+#Para saber si se esta ejecutando
+minikube status
+
+#Halt the cluster para ahorrar recurso
+minikube stop 
+
+#para averiguar la ip de minikube
+minikube ip
+
+
 #show clusters 
 kubectl config get-contexts
 kctx
@@ -34,12 +44,6 @@ kctx
 kubectl config use-contexts minikube
 k config use-context minikube
 kctx minikube
-
-#Halt the cluster para ahorrar recurso
-minikube stop 
-
-#para averiguar la ip de minikube
-minikube ip
 
 #Add a nodes to the give cluster config, and starts it.
 minikube node add --worker
