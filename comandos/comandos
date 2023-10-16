@@ -1,5 +1,9 @@
 https://killercoda.com/login
 
+#para ver la vesion
+kubectl version
+Aparece la versión del cliente y la version del server
+
 ##Para ver tanto los cluster configurados. Tanto a GKE como a Minikube
 kubectl config get-contexts
 
