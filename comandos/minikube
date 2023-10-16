@@ -1,4 +1,27 @@
+Instalación
 https://minikube.sigs.k8s.io/docs/start/
+
+Desinstalación Minikube 
+https://stackoverflow.com/questions/66016567/how-to-uninstall-minikube-from-ubuntu-i-get-an-unable-to-load-cached-images-e 
+
+First, run minikube delete to remove minikube VM (or container if run with docker driver), 
+virtual network interfaces configured on the host machine and all other traces of minikube cluster.
+
+you can always check it by running:
+
+which minikube
+
+you can simply remove the binary from /usr/local/bin/minikube directory as what the above command basically does, 
+is copying the binary to the destination directory. If it's installed in a different directory, 
+
+If it was installed using dpkg package manager: 
+sudo dpkg -i minikube_latest_amd64.deb
+
+If it shows you something like:
+ii    minikube    1.17.1    amd64    Minikube
+
+you can completely remove it (with all its configuration files) by running:
+sudo dpkg --purge minikube
 
 #Start your cluster
 minikube start
