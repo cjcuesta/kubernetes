@@ -17,7 +17,7 @@ k config use-context gke_practica-keep-carlosjulio_europe-west1-b_cluster-cj
 kubectl get nodes
 k get nodes
 
-Creamo un POD con nombre my-nginx con imagen ngixn que la descarga automaticamente de Docker Hub
+#Creamos un POD con nombre my-nginx con imagen ngixn que la descarga automaticamente de Docker Hub
 k run my-nginx --image=nginx
 
 #muestra los PODs del namespace donde este
@@ -29,6 +29,9 @@ my-nginx   1/1     Running   0          3m53s
 k get pods -o wide
 NAME       READY   STATUS    RESTARTS   AGE    IP           NODE       NOMINATED NODE   READINESS GATES
 my-nginx   1/1     Running   0          4m6s   10.244.0.3   minikube   <none>           <none>
+
+#Borramos el POD creado
+k delete pods my-nginx
 
 #muestra los PODs de todos los namespaces
 k get pods -A
