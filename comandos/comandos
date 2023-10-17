@@ -106,6 +106,12 @@ k get deployment dep-my-first
 ## Describe el Deployment
 k describe deployment dep-my-first
 
+## Baja de 6 a 2 réplicas 
+k scale deployment dep-my-first --replicas 2
+
+##Borra el deployment junto con sus réplicas
+k delete deployment dep-my-first
+
 #Muestra todos los deployments
 k get deployments 
 
