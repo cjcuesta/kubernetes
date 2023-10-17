@@ -95,8 +95,22 @@ curl nginx
 ##Crear un DEPLOYMENT
 kubectl create deployment dep-my-first --image=nginx --dry-run=client -o=yaml > dep-my-first.yaml
 
+##Se modifica en Visual Studio y se coloca a 6 las replicas
+
 ##Se aplica el DEPLOYMENT
-kubecetl apply -f dep-my-first.yaml 
+kubectl apply -f dep-my-first.yaml 
+
+## Muestra un deployment en particular
+k get deployment dep-my-first
+
+## Describe el Deployment
+k describe deployment dep-my-first
+
+#Muestra todos los deployments
+k get deployments 
+
+##Muestra lo sucedido con los deployments
+k describe deployments
 
 ##Para crear un servico de tipo LoadBalancer pueda ser accesible desde el exterior
 ##Esto pide el password de root y bloquea la ventana
