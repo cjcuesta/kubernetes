@@ -1,5 +1,27 @@
 https://kubernetes.io/docs/tasks/run-application/run-single-instance-stateful-application/ 
 
+#Construyo una imagen de MySQL
+docker build -t mysql:v4 -f Dockerfile .
+
+#Creo el contenedor my-db3
+docker run -d -p 3306:3306 --name my-db3 -e MYSQL_ROOT_PASSWORD=12345 -e MYSQL_DATABASE=docker-db -e MYSQL_USER=docker-user -e MYSQL_PASSWORD=54321 mysql:v4
+
+#Ingreso al contenedor 
+docker exec -ti my-db3 bash
+
+#Reviso en el contenedor los archivos y la info
+cat  /usr/local/bin/mysqld.sh 
+cat /etc/my.cnf
+cat /docker-entrypoint-initdb.d/db.sh
+
+#Guardo en mi local una imagen con los archivos de configuracion
+docker commit my-db3 cjcuesta/mysql:v4
+
+#Los subo al repositorio
+docker push cjcuesta/mysql:v4
+
+
+minikube start
 # En este esta todo 
 k apply -f mysql-pv.yaml 
 
