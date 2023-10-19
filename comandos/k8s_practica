@@ -1,0 +1,37 @@
+https://kubernetes.io/docs/tasks/run-application/run-single-instance-stateful-application/ 
+
+# En este esta todo 
+k apply -f mysql-pv.yaml 
+
+k get pvc mysql-pv-claim 
+k get pv mysql-pv-volume 
+
+k describe pvc mysql-pv-claim 
+k describe pv mysql-pv-volume 
+
+k apply -f mysql-deployment.yaml
+
+kubectl describe deployment mysql
+
+kubectl run -it --rm --image=mysql:5.6 --restart=Never mysql-client -- mysql -h mysql -p12345
+
+kubectl run -it --rm --image=mysql:5.6 --restart=Never mysql-client -- mysql -h mysql -u flask-app -p54321
+
+kubectl run -it --rm --image=mysql --restart=Never mysql-client -- mysql -h mysql -p12345
+
+kubectl run -it --rm --image=mysql --restart=Never mysql-client -- mysql -h mysql -u flask-app -p54321
+
+k exec -ti mysql-7b877cd6db-mjpmm -- bash
+ 
+kubectl delete deployment,svc mysql
+
+kubectl delete pvc mysql-pv-claim
+kubectl delete pv mysql-pv-volume
+
+para borrar la data de minikube
+minikube delete 
+ 
+ 
+ https://www.returngis.net/2019/04/acceder-a-tus-aplicaciones-en-kubernetes-a-traves-de-ingress/ 
+ 
+ https://www.returngis.net/2020/05/configurar-un-ingress-controller-con-nginx-helm-y-nip-io/
