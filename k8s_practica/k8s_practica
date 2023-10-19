@@ -1,0 +1,46 @@
+https://kubernetes.io/docs/tasks/run-application/run-single-instance-stateful-application/ 
+
+# En este esta todo 
+k apply -f mysql-pv.yaml 
+
+k get pvc mysql-pv-claim 
+k get pv mysql-pv-volume 
+
+k describe pvc mysql-pv-claim 
+k describe pv mysql-pv-volume 
+
+k apply -f mysql-deployment.yaml
+
+kubectl describe deployment mysql
+
+#desde una imagen de la misma version nos conectamos al deployment como usurio root por defecto
+kubectl run -it --rm --image=mysql --restart=Never mysql-client -- mysql -h mysql -p12345
+
+#desde una imagen de la misma version nos conectamos al deployment con un suario que hayamos creado
+kubectl run -it --rm --image=mysql --restart=Never mysql-client -- mysql -h mysql -u flask-app -p54321
+
+nos podemos conectar a la consola del POD mysql-7b877cd6db-mjpmm
+k exec -ti mysql-7b877cd6db-mjpmm -- bash
+
+#Nos conectamos como root 
+bash-4.4# mysql -h 127.0.0.1 -u root -p12345
+
+#Nos conectamos como el usuario que hayamos pasado en el parametro.
+bash-4.4# mysql -h 127.0.0.1 -u flask-app -p54321
+
+ 
+kubectl delete deployment,svc mysql
+
+kubectl delete pvc mysql-pv-claim
+kubectl delete pv mysql-pv-volume
+
+para borrar la data de minikube
+minikube delete 
+
+para iniciar en blaco
+minikube start
+ 
+ 
+ https://www.returngis.net/2019/04/acceder-a-tus-aplicaciones-en-kubernetes-a-traves-de-ingress/ 
+ 
+ https://www.returngis.net/2020/05/configurar-un-ingress-controller-con-nginx-helm-y-nip-io/
