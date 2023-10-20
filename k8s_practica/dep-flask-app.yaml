@@ -1,0 +1,29 @@
+apiVersion: apps/v1          # Version de la API (puede cambiar entre versiones de k8s)
+kind: Deployment             # TIPO: Deployment
+metadata:                    # Metadatos del Deployment
+  name: dep-flask-app
+  labels:
+    app: dep-flask-app      # este label existe a nivel de deployment
+spec:                       # Spec del DEPLOYMENT
+  selector:
+    matchLabels:
+      app: app-flask
+  replicas: 1               # indica al controlador que ejecute 2 pods
+  template:                 # Aquí comienza el bloque del POD
+    metadata:               # Metadatos del POD
+      labels:               # Labels del POD (distintos a los del deployment!)
+        app: app-flask
+    spec:                   # Especificación del POD
+      containers:           # Declaración de los contenedores del POD
+      - name: app-flask
+        image: cjcuesta/app-flask:v1
+        ports:
+          - containerPort: 5000
+        env:
+          # Define the environment variable
+          - name: MYSQL_HOST
+            value: "mysql"
+#            valueFrom:
+#              configMapKeyRef:
+#                name: cfm-flask-app
+#                key: REDIS_HOST
