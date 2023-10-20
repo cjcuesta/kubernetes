@@ -80,6 +80,31 @@ minikube delete
 
 para iniciar en blaco
 minikube start
+
+k apply -f pv-mysql.yaml 
+k apply -f sts-mysql.yaml 
+k apply -f svc-mysql.yaml
+k apply -f dep-flask-app.yaml
+minikube tunnel 
+k apply -f svc-load-app-flask.yaml 
+k get svc -w  
+
+curl http://EXTERNAL-IP:5000/
+
+
+k apply -f pv-mysql.yaml 
+k apply -f sts-mysql.yaml 
+k apply -f svc-mysql.yaml
+k apply -f dep-flask-app.yaml
+k apply -f svc-app-flask.yaml
+minikube tunnel 
+minikube addons enable ingress
+k apply -f ingress-apps.yaml
+k get ingress -w                        #Se espera a que se le de la ip ADDRESS
+
+curl http://ADDRESS/
+curl http://ADDRESS/inicializa-contador 
+
  
  
  https://www.returngis.net/2019/04/acceder-a-tus-aplicaciones-en-kubernetes-a-traves-de-ingress/ 
