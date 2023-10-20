@@ -1,0 +1,22 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ingress-apps
+spec:
+  rules:
+    - http:
+        paths:
+          - pathType: Prefix
+            path: /
+            backend:
+              service:
+                name: svc-app-flask
+                port:
+                  number: 5000                  
+          - pathType: Prefix
+            path: /inicializa-contador
+            backend:
+              service:
+                name: svc-app-flask
+                port:
+                  number: 5000                                    

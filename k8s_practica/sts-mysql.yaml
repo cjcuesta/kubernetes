@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: mysql
+spec:
+  selector:
+    matchLabels:
+      app: mysql
+  serviceName: "svc-headless-mysql" # Tiene que hacer match con el headless service name    
+  template:
+    metadata:
+      labels:
+        app: mysql
+    spec:
+      containers:
+      - image: cjcuesta/mysql:v4
+        name: mysql
+        command: ["/usr/local/bin/mysqld.sh"]
+        env:
+          # Use secret in real usage
+        - name: MYSQL_ROOT_PASSWORD
+          value: "12345"
+        - name: MYSQL_DATABASE
+          value: my-db
+        - name: MYSQL_USER
+          value: flask-app
+        - name: MYSQL_PASSWORD
+          value: "54321"
+        ports:
+        - containerPort: 3306
+          name: mysql
+        volumeMounts:
+        - name: mysql-persistent-storage
+          mountPath: /var/lib/mysql
+      volumes:
+      - name: mysql-persistent-storage
+        persistentVolumeClaim:
+          claimName: mysql-pv-claim
