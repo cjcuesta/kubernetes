@@ -14,12 +14,18 @@ cat  /usr/local/bin/mysqld.sh
 cat /etc/my.cnf
 cat /docker-entrypoint-initdb.d/db.sh
 
-#Guardo en mi local una imagen con los archivos de configuracion
+#Guardo en mi local una imagen de MySQL con los archivos de configuracion
 docker commit my-db3 cjcuesta/mysql:v4
 
-#Los subo al repositorio
+#Los subo la imagen al repositorio
 docker push cjcuesta/mysql:v4
 
+#Guardo en mi local una imagen de la APP con los archivos de configuracion
+docker commit app cjcuesta/app-flask:v1
+docker images
+
+#Los subo la imagen al repositorio
+docker push cjcuesta/app-flask:v1
 
 minikube start
 # En este esta todo 
@@ -34,6 +40,12 @@ k describe pv mysql-pv-volume
 k apply -f mysql-deployment.yaml
 
 kubectl describe deployment mysql
+
+#Se mira el nombre del pod
+k get pods -w
+
+#Se puede ingresar a pod a revisarlo
+k exec -ti mysql-66cc4d45d5-4gqmz -- bash
 
 #desde una imagen de la misma version nos conectamos al deployment como usurio root por defecto
 kubectl run -it --rm --image=mysql --restart=Never mysql-client -- mysql -h mysql -p12345
@@ -50,7 +62,14 @@ bash-4.4# mysql -h 127.0.0.1 -u root -p12345
 #Nos conectamos como el usuario que hayamos pasado en el parametro.
 bash-4.4# mysql -h 127.0.0.1 -u flask-app -p54321
 
+k apply -f dep-flask-app.yaml
  
+ k get pods -w
+ 
+ minikube tunnel
+ 
+ k apply -f app-svc.yaml 
+  
 kubectl delete deployment,svc mysql
 
 kubectl delete pvc mysql-pv-claim
