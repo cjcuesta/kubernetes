@@ -57,3 +57,19 @@ minikube node stop
 minikube node start
 
 
+# Para crear un perfil
+minikube start --kubernetes-version='v1.28.3' \
+    --cpus=4 \
+    --memory=4096 \
+    --addons="metrics-server,default-storageclass,storage-provisioner,ingress,ingress-dns" \
+    -p liberando-productos-cj
+
+# Para ver los perfiles creados
+minikube profile list 
+
+# para borrar un perfil
+minikube -p nombreperfil delete 
+
+
+
+
