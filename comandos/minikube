@@ -57,12 +57,23 @@ minikube node stop
 minikube node start
 
 
-# Para crear un perfil
+# Para crear un perfil o contexto
 minikube start --kubernetes-version='v1.28.3' \
     --cpus=4 \
     --memory=4096 \
     --addons="metrics-server,default-storageclass,storage-provisioner,ingress,ingress-dns" \
     -p liberando-productos-cj
+
+# Crear un perfil o contexto con 3 nodos o workers
+minikube start --kubernetes-version='v1.28.3' \
+    --cpus=4 \
+    --memory=4096 \
+    --nodes=3 \
+    --addons="metrics-server,default-storageclass,storage-provisioner,ingress,ingress-dns" \
+    -p liberando-productos-cj
+
+# Adicion de un nuevo nodo en minikube
+minikube -p liberando-productos-cj node add --worker
 
 # Para ver los perfiles creados
 minikube profile list 
