@@ -1,0 +1,17 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: my-curl-pod
+spec:
+  selector:
+    matchLabels:
+      name: my-curl-pod
+  template:
+    metadata:
+      labels:
+        name: my-curl-pod
+    spec:
+      containers:
+        - name: my-curl-pod
+          image: curlimages/curl:8.8.0
+          command: ['sh', '-c', 'echo The my-curl-pod is running! && sleep 3600']
