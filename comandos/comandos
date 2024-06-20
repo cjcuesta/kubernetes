@@ -17,6 +17,9 @@ k config use-context gke_practica-keep-carlosjulio_europe-west1-b_cluster-cj
 kubectl get nodes
 k get nodes
 
+#Muestra los nodos del cluster en el que se este conectado con sus respectivas ip
+k get nodes -o wide
+
 #Creamos un POD con nombre my-nginx con imagen ngixn que la descarga automaticamente de Docker Hub
 k run my-nginx --image=nginx
 
@@ -76,8 +79,9 @@ kubectl run nginx --image=eedugon/flask --dry-run=client -o=yaml --env REDIS_HOS
 
 kubectl run nginx --image=eedugon/flask --dry-run=client -o=yaml --env REDIS_HOST=redis --command -- echo -c "Hola Mundo" > pod-nginx-spec.yaml
 
-#me puedo conectar al POD
+#me puedo conectar al POD por bash o sh de acuerdo a la imagen
 k exec pod-nginx -it -- bash
+k exec pod-nginx -it -- sh
 
 #Para crear un Pod directamente 
 #Crea un pod busybox y nos quedamos por linea de comandos se destruye cuando salimos
