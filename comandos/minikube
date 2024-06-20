@@ -75,8 +75,14 @@ minikube start --kubernetes-version='v1.28.3' \
 # Adicion de un nuevo nodo en minikube
 minikube -p liberando-productos-cj node add --worker
 
+# Para ver los nodos creados con sus respectivas ip
+k get nodes -o wide
+
 # Para ver los perfiles creados
 minikube profile list 
+
+#Para saber si se esta ejecutando ep perfil 
+minikube -p liberando-productos-cj status
 
 # para borrar un perfil
 minikube -p nombreperfil delete 
