@@ -17,7 +17,10 @@ k config use-context gke_practica-keep-carlosjulio_europe-west1-b_cluster-cj
 kubectl get nodes
 k get nodes
 
-#Muestra los nodos del cluster en el que se este conectado con sus respectivas ip
+#Muestra los nodos del cluster en el que se este conectado con:
+- sus respectivas ip
+- Sistema Operativo
+- Version del kernel
 k get nodes -o wide
 
 #Creamos un POD con nombre my-nginx con imagen ngixn que la descarga automaticamente de Docker Hub
