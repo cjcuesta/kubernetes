@@ -2,7 +2,10 @@ https://killercoda.com/login
 
 #para ver la vesion
 kubectl version
-Aparece la versión del cliente y la version del server
+Aparece: 
+- la version de kustomize 
+- la versión de kubernetes cliente es decir de kubectl
+- la version del server es decir la del cluster
 
 ##Para ver tanto los cluster configurados. Tanto a GKE como a Minikube
 kubectl config get-contexts
