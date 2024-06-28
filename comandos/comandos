@@ -16,6 +16,15 @@ k config use-context minikube
 ##para cambiarme al contexto GKE
 k config use-context gke_practica-keep-carlosjulio_europe-west1-b_cluster-cj 
 
+##para ver los namespaces
+kubectl get ns
+
+##para ver los namespaces y que marque en el que estoy actualmente
+kubectl ns
+
+##para pasarme a un namespace especifico 
+kubectl ns kube-system
+
 #Muestra los nodos del cluster en el que se este conectado 
 kubectl get nodes
 k get nodes
