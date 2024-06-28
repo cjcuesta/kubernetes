@@ -48,9 +48,6 @@ k get pods -o wide
 NAME       READY   STATUS    RESTARTS   AGE    IP           NODE       NOMINATED NODE   READINESS GATES
 my-nginx   1/1     Running   0          4m6s   10.244.0.3   minikube   <none>           <none>
 
-#Borramos el POD creado
-k delete pods my-nginx
-
 #muestra los PODs de todos los namespaces
 k get pods -A
 
@@ -73,6 +70,9 @@ kubectl run pod-nginx --image=nginx:1.14.2  --dry-run=client -o=yaml > pods/pod-
 ##  dnsPolicy: ClusterFirst
 ##  restartPolicy: Always
 ##   status: {}
+
+#Borramos el POD creado
+k delete pod nombre-pod
 
 ##Luego se aplican los cambios realizados
 kubectl apply -f pods/pod-nginx.yaml
@@ -98,8 +98,18 @@ kubectl run nginx --image=eedugon/flask --dry-run=client -o=yaml --env REDIS_HOS
 k exec pod-nginx -it -- bash
 k exec pod-nginx -it -- sh
 
+#comando para ir mirando que sucede con los pods
+# 1ro Abrimos 2 consola
+# En una consola digitamos el comando que 
+kubectl get pods -w
+
+#En la 2da otra consola podemos crear un pod que se destruye al salir. 
+#Como en los siguientes pasos
+
 #Para crear un Pod directamente 
 #Crea un pod busybox y nos quedamos por linea de comandos se destruye cuando salimos
+##OJO --rm debe ser todo pegado sino el sistema creera que es un command y no desplegará el pod
+
 kubectl run curl-test -it --image=radial/busyboxplus:curl --rm
 
 ##Si se pierde la consola se puede ingresar de la siguiente manera
