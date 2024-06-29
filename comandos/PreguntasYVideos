@@ -1,0 +1,35 @@
+-------------------
+video 1    
+-------------------
+03:14 ejercicios
+03:19 ejercicio init containers
+03:34 Controladores de Pods (Teoria sin practica)
+      Deployments
+      StatefulSet
+      DeamonSet
+03:35 Servicios.(teoria + Practica)
+      Son los que manejan el trafico 
+03:46 Demo de servicios (servicios.md)
+-----------------------
+video 2
+-----------------------
+Comando para ver la version de kubectl
+Comando para ver los contexto de kubectl
+Comando para cambiarse a un contexto (o cluster) minikube
+Comando para ver los namespaces
+Comando para ver los namespaces y saber en cual estoy actualmente
+Comando para pasarme a un namespace especifico (kube-system)
+Comando para ver los nodos
+Comando para ver los nodos junto con su IP y SO y kernel
+Comando para crear un pod (nginx)
+Comando para ver los pods de todos los namespaces
+Comando para ver los pods
+Comando para ver un pod especifico
+comando para ver un pod en formato yaml
+Comando para crear un archivo yaml para un POD desde la linea de comandos
+Comando para borrar un pod
+Comando para crear un pod desde un archivo yaml
+Comando para crear un pod con variables de ambiente
+Comando para ingresar a un pod
+Comando para esperar que sucede con los pods 
+Comando para crear un pod, ingresar a él y destruirlo cuando nos salimos (imagen radial/busyboxplus:curl)
