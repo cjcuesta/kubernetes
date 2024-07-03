@@ -13,6 +13,12 @@ video 1
 -----------------------
 video 2
 -----------------------
+minikube start --kubernetes-version='v1.28.3' \
+    --cpus=4 \
+    --memory=4096 \
+    --addons="metrics-server,default-storageclass,storage-provisioner,ingress,ingress-dns" \
+    -p liberando-productos-cj
+
 Comando para ver la version de kubectl
 Comando para ver los contexto de kubectl
 Comando para cambiarse a un contexto (o cluster) minikube
