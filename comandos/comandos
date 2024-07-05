@@ -16,6 +16,8 @@ k config use-context minikube
 ##para cambiarme al contexto GKE
 k config use-context gke_practica-keep-carlosjulio_europe-west1-b_cluster-cj 
 
+Existen 2 name spaces por defecto: Default y kube-systme
+
 ##para ver los namespaces
 kubectl get ns
 
@@ -24,6 +26,16 @@ kubectl ns
 
 ##para pasarme a un namespace especifico 
 kubectl ns kube-system
+
+##Para crear un name space
+kubectl create ns test
+
+##para ver los pods que hay en un namespace
+kubectl -n test get pods
+
+los objetos en kubernates pueden ser namespaced o  non-namespaced
+kubectl api-resources --namespaced=true
+kubectl api-resources --namespaced=false
 
 #Muestra los nodos del cluster en el que se este conectado 
 kubectl get nodes
