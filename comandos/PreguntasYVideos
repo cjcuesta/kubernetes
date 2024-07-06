@@ -22,13 +22,20 @@ minikube start --kubernetes-version='v1.28.3' \
 Comando para ver la version de kubectl
 Comando para ver los contexto de kubectl
 Comando para cambiarse a un contexto (o cluster) minikube
+Cuales son los namespaces principales de K8s
 Comando para ver los namespaces
 Comando para ver los namespaces y saber en cual estoy actualmente
 Comando para pasarme a un namespace especifico (kube-system)
+Comando para crear un namespace (test)
+Comando para ver los pods que hay en un namespace donde no estoy parado 
+- pasarme al default
+- ver los pods del kube-system
+Cuales es el comando para que los objetos tengan o no tengan namespaces
 Comando para ver los nodos
 Comando para ver los nodos junto con su IP y SO y kernel
 Comando para crear un pod (nginx)
 Comando para ver los pods de todos los namespaces
+
 Comando para ver los pods
 Comando para ver un pod especifico
 comando para ver un pod en formato yaml
