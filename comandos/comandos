@@ -55,7 +55,14 @@ k get pods
 NAME       READY   STATUS    RESTARTS   AGE
 my-nginx   1/1     Running   0          3m53s
 
-#muestra los PODs del namespace donde este y amplia inform
+
+#Comando para ver los pods
+k get pods
+
+Comando para esperar que sucede con los pods 
+k get pods -w
+
+#muestra los PODs del namespace, en que nodo esta, que ip tiene y amplia informacion
 k get pods -o wide
 NAME       READY   STATUS    RESTARTS   AGE    IP           NODE       NOMINATED NODE   READINESS GATES
 my-nginx   1/1     Running   0          4m6s   10.244.0.3   minikube   <none>           <none>
