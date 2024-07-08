@@ -20,29 +20,77 @@ minikube start --kubernetes-version='v1.28.3' \
     -p liberando-productos-cj
 
 Comando para ver la version de kubectl
+
+
 Comando para ver los contexto de kubectl
+
+
 Comando para cambiarse a un contexto (o cluster) minikube
+
+
 Cuales son los namespaces principales de K8s
+
+
 Comando para ver los namespaces
+
+
 Comando para ver los namespaces y saber en cual estoy actualmente
+
+
 Comando para pasarme a un namespace especifico (kube-system)
+
+
 Comando para crear un namespace (test)
+
+
 Comando para ver los pods que hay en un namespace donde no estoy parado 
-- pasarme al default
+- pasarme al default 
 - ver los pods del kube-system
+
 Cuales es el comando para que los objetos tengan o no tengan namespaces
+
+
 Comando para ver los nodos
+
+
 Comando para ver los nodos junto con su IP y SO y kernel
+
+
 Comando para crear un pod (nginx)
-Comando para ver los pods de todos los namespaces
+ 
 
 Comando para ver los pods
-Comando para ver un pod especifico
-comando para ver un pod en formato yaml
-Comando para crear un archivo yaml para un POD desde la linea de comandos
-Comando para borrar un pod
-Comando para crear un pod desde un archivo yaml
-Comando para crear un pod con variables de ambiente
-Comando para ingresar a un pod
+
+
 Comando para esperar que sucede con los pods 
+
+
+comando para ver la información ampliada de los pods
+
+
+Comando para ver los pods de todos los namespaces
+
+
+Comando para ver un pod especifico
+
+
+comando para ver un pod en formato yaml
+
+
+Comando para crear un archivo yaml para un POD desde la linea de comandos
+
+
+Comando para borrar un pod
+
+
+Comando para crear un pod desde un archivo yaml
+
+
+Comando para crear un pod con variables de ambiente
+
+
+Comando para ingresar a un pod
+
+
 Comando para crear un pod, ingresar a él y destruirlo cuando nos salimos (imagen radial/busyboxplus:curl)
+
