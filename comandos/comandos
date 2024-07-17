@@ -73,11 +73,23 @@ k get pods -A
 #muestra solo el nombre del pod
 k get pod nombre-pod 
 
+#Muestra informacion del pod y sus contenedores
+- Muestra la IP
+- Muestra los initContainers y su estado que van en orden
+- Muestra el contenedor ppal
+- Muestra condiciones, volumenes, node-selectors, info de inicializacion
+
+k describe pod nombre-pod 
+
 #Comando para ver los logs de un pod
 k logs nombre-pod
 
 #Comando para ver los logs continuo de un pod
 k logs -f nombre-pod
+
+#Comando para ver los logs de un pod cuando se tienen varios contenedores
+#Se debe colocar el nombre del contenedor
+k logs nombre-pod-multicontenedor -c nombre(init)Container
 
 #Muestra la definicion del pod aunque no se pueda modificar
 k get pod nombre-pod -o=yaml
