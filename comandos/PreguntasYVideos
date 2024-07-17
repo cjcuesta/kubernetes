@@ -80,6 +80,9 @@ Comando para ver los logs de un pod
 Comando para ver los logs continuo de un pod
 
 
+Comando para ver los logs de un pod cuando se tienen varios contenedores
+
+
 comando para ver un pod en formato yaml
 
 
