@@ -74,6 +74,9 @@ Comando para ver los pods de todos los namespaces
 Comando para ver un pod especifico
 
 
+Comando para ver los logs de un pod
+
+
 comando para ver un pod en formato yaml
 
 
@@ -84,6 +87,8 @@ Comando para borrar un pod
 
 
 Comando para crear un pod desde un archivo yaml
+
+
 
 
 Comando para borrar un pod (o cualquier objeto) que se hay creado desde un archivo yaml
