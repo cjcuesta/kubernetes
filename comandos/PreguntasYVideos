@@ -86,6 +86,9 @@ Comando para borrar un pod
 Comando para crear un pod desde un archivo yaml
 
 
+Comando para borrar un pod (o cualquier objeto) que se hay creado desde un archivo yaml
+
+
 Comando para crear un pod con variables de ambiente
 
 
