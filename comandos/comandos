@@ -73,6 +73,9 @@ k get pods -A
 #muestra solo el nombre del pod
 k get pod nombre-pod 
 
+#Comando para ver los logs de un pod
+k logs myapp-pod
+
 #Muestra la definicion del pod aunque no se pueda modificar
 k get pod nombre-pod -o=yaml
 
