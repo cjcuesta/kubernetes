@@ -16,7 +16,7 @@ k config use-context minikube
 ##para cambiarme al contexto GKE
 k config use-context gke_practica-keep-carlosjulio_europe-west1-b_cluster-cj 
 
-Existen 2 name spaces por defecto: Default y kube-systme
+Existen 2 name spaces por defecto: Default y kube-system
 
 ##para ver los namespaces
 kubectl get ns
@@ -95,6 +95,9 @@ k delete pod nombre-pod
 
 ##Luego se aplican los cambios realizados
 kubectl apply -f pods/pod-nginx.yaml
+
+##Comando para borrar un pod (o cualquier objeto) que se hay creado desde un archivo yaml
+kubectl delete -f pods/pod-nginx.yaml
 
 ##args    equivale a CMD en docker
 ##command equivale a ENTRYPOINT en docker
