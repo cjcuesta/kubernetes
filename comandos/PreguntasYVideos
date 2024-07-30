@@ -13,6 +13,10 @@ video 1
 -----------------------
 video 2
 -----------------------
+00:12:54 Colocar labels a los puertos contenedores
+00:17:19 Sevicio HeadLess
+00:26:22 Liveness y readiness probe
+
 minikube start --kubernetes-version='v1.28.3' \
     --cpus=4 \
     --memory=4096 \
