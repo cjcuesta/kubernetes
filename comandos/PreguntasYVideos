@@ -24,7 +24,7 @@ minikube start --kubernetes-version='v1.28.3' \
     -p liberando-productos-cj
 
 Comando para ver la version de kubectl
-k version
+
 
 Comando para ver los contexto de kubectl
 
