@@ -10,8 +10,14 @@ Aparece:
 ##Para ver tanto los cluster configurados. Tanto a GKE como a Minikube
 kubectl config get-contexts
 
+##Cuando ya se ha acondicionado el sistema
+kctx
+
 ##para cambiarme al cluster minikube
 k config use-context minikube
+
+##cuando ya se ha acondicionado el sistema
+kctx minikube
 
 ##para cambiarme al contexto GKE
 k config use-context gke_practica-keep-carlosjulio_europe-west1-b_cluster-cj 
@@ -24,18 +30,27 @@ kubectl get ns
 ##para ver los namespaces y que marque en el que estoy actualmente
 kubectl ns
 
+##cuando ya se ha acondicionado el sistema
+kns
+
 ##para pasarme a un namespace especifico 
 kubectl ns kube-system
 
+##cuando ya se ha acondicionado el sistema
+kns kube-system
+
 ##Para crear un name space
 kubectl create ns test
+
+##Para borrar un name space
+kubectl delete namespace test
 
 ##para ver los pods que hay en un namespace
 kubectl -n test get pods
 
 los objetos en kubernates pueden ser namespaced o  non-namespaced
-kubectl api-resources --namespaced=true
 kubectl api-resources --namespaced=false
+kubectl api-resources --namespaced=true
 
 #Muestra los nodos del cluster en el que se este conectado 
 kubectl get nodes
