@@ -35,7 +35,7 @@ Comando para ver los contexto de kubectl.Cuando ya se ha acondicionado el sistem
 Comando para cambiarse a un contexto (o cluster) minikube
 
 
-Cuando ya se ha acondicionado el sistema
+Comando para cambiarse a un contexto (o cluster) minikube. Cuando ya se ha acondicionado el sistema
 
 
 Cuales son los namespaces principales de K8s
