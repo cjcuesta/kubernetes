@@ -96,6 +96,9 @@ k get pod nombre-pod
 
 k describe pod nombre-pod 
 
+Comando para ver los labels de los pods
+k get pods --show-labels
+
 #Comando para ver los logs de un pod
 k logs nombre-pod
 
@@ -170,37 +173,114 @@ kubectl run curl-test -it --image=radial/busyboxplus:curl --rm
 ##Si se pierde la consola se puede ingresar de la siguiente manera
 k exec curl-test -it -- sh
 
-#Podemos buscar por nombre
-nslookup nginx 
+##Una vez en la consola verificar que se pueda ver el pod
+$ curl ip-pod
 
-#Podemos llamar al contenedor
-curl nginx
+##Una vez en la consola verificar que se pueda ver el pod
+$ curl ip-pod:puerto
 
-##Crear un DEPLOYMENT
-kubectl create deployment dep-my-first --image=nginx --dry-run=client -o=yaml > dep-my-first.yaml
+##Una vez en la consola verificar que se pueda ver el pod
+$ nslookup ip-pod:puerto
 
-##Se modifica en Visual Studio y se coloca a 6 las replicas
+##Comando para crear un Deployment
+kubectl create deployment my-nginx-dep --image=nginx:latest
+
+Comando para ver los deployments
+k get deployments
+
+Comando para ver un deployment specifico
+k get deployment my-nginx-dep
+
+Comando para ver un deployment espcifico con la informacion apliada 
+muestra replicas, contenedores imagen, labels
+k get deployment my-nginx-dep -o wide 
+
+Comando para mostrar la informacion espedifica del deployment
+k describe deployment my-nginx-dep
+
+Comando para ver los labels de los pods
+k get pods --show-labels
+
+comando para ver los pod de un deployment
+k get pods -l app=my-nginx-dep
+
+Comando para ver las replicas set asociados a los deployments
+k get rs
+
+##Comando para borrar un deployment
+k delete deployment my-nginx-dep
+
+##Crear un archivo con la definicion de un DEPLOYMENT 
+kubectl create deployment my-nginx-dep --image=nginx:latest --dry-run=client -o=yaml > my-nginx-dep.yaml
 
 ##Se aplica el DEPLOYMENT
-kubectl apply -f dep-my-first.yaml 
+kubectl apply -f my-nginx-dep.yaml 
 
-## Muestra un deployment en particular
-k get deployment dep-my-first
+#Borrar el deployment anterior
+k delete -f my-nginx-dep.yaml
 
-## Describe el Deployment
-k describe deployment dep-my-first
+#Comando para crear un deployment desde la linea de comandos con 3  replicas
+k create deployment my-nginx-dep --image=nginx:latest --replicas=3
 
-## Baja de 6 a 2 réplicas 
-k scale deployment dep-my-first --replicas 2
+#Borrar el deployment anterior
+k delete -f my-nginx-dep.yaml
 
-##Borra el deployment junto con sus réplicas
-k delete deployment dep-my-first
+#Comando para crear un deployment desde la linea de comandos con 3  replicas y guardarlo en un archivo
+k create deployment my-nginx-dep --image=nginx:latest --replicas=3 --dry-run=client -o yaml > my-nginx-dep.yaml
 
-#Muestra todos los deployments
-k get deployments 
 
-##Muestra lo sucedido con los deployments
-k describe deployments
+Comando para scalar el numero de replicas
+k scale deployment my-nginx-dep --replicas=5
+
+Comando para autoscalar min 10 a max 15 replicas si ahy un 80% de consumo de cpu
+Esto crea un HPA (Horizontal Pod Autoscaler)
+k autoscale deployment my-nginx-dep --min=10 --max=15 --cpu-percent=80
+
+Comando para ver los Horizontal Pod Autoscaler
+Muestra el nombre del recurso y a cual deployment esta asociado
+k get hpa
+k get hpa my-nginx-dep
+k get hpa my-nginx-dep -o yaml
+
+Comando para cambiar la imagen de un deployment
+k --record deployment.apps/my-nginx-deployment set image deployment.v1.apps/my-nginx-dep nginx=nginx:1.9.1
+
+Comando para ver como estan sucediendo los cambios en el deployment
+kubectl rollout status deployment my-nginx-dep
+
+Comando para ver el historial de cambios
+Aqui muestra el cambio y 
+k rollout history deployment my-nginx-dep
+
+Comando para ver el cambio de una revisiòn
+k rollout history deployment my-nginx-dep --revision=6
+
+Comando para devolverse a la revision anterior
+k rollout undo deployment my-nginx-dep
+
+Comando para devolverse a una revision especifica
+Ojo: el el numero que aparece en la Columna revision
+k rollout undo deployment my-nginx-dep --to-revision=7
+
+Comando para pausar/detener las actualizaciones
+k rollout pause deployment my-nginx-dep
+
+Si revisamos con siguiente comando veremos que no dice nada
+k rollout status deployment my-nginx-dep
+
+Aplicar cambios en el deployment
+Comando para cambiar la imagen con kubectl
+kubectl set image deployment my-nginx-dep nginx=nginx:1.9.5
+
+Comando para aplicar  limites de memoria
+kubectl set resources deployment my-nginx-dep -c=nginx --limits=cpu=200m,memory=512Mi
+
+Comando para ver como estan sucediendo los cambios en el deployment
+Mostrara que no se ha cambiado y que esta esperando wait...
+kubectl rollout status deployment my-nginx-dep
+
+Comando para activar los cambios a realizar
+k rollout resume deployment my-nginx-dep
 
 ##Para crear un servico de tipo LoadBalancer pueda ser accesible desde el exterior
 ##Esto pide el password de root y bloquea la ventana
