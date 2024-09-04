@@ -71,6 +71,8 @@ Comando para ver los pods de todos los namespaces
 
 Comando para ver un pod especifico
 
+Comando para ver los labels de los pods
+
 Comando para describir un pod especifico
 
 Comando para ver los logs de un pod
