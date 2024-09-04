@@ -25,103 +25,76 @@ minikube start --kubernetes-version='v1.28.3' \
 
 Comando para ver la version de kubectl
 
-
 Comando para ver los contexto de kubectl
-
 
 Comando para ver los contexto de kubectl.Cuando ya se ha acondicionado el sistema
 
-
 Comando para cambiarse a un contexto (o cluster) minikube
-
 
 Comando para cambiarse a un contexto (o cluster) minikube. Cuando ya se ha acondicionado el sistema
 
-
 Cuales son los namespaces principales de K8s
-
 
 Comando para ver los namespaces
 
-
 Comando para ver los namespaces y saber en cual estoy actualmente
-
 
 Comando para ver los namespaces y saber en cual estoy actualmente. Cuando ya se ha acondicionado el sistema
 
-
 Comando para pasarme a un namespace especifico (kube-system)
 
-
-Comando para pasarme a un namespace especifico (kube-system). Cuando ya se ha acondicionado el sistema
-
+Comando para pasarme a un namespace especifico (default). Cuando ya se ha acondicionado el sistema
 
 Comando para crear un namespace (test)
 
-
 Comando para borrar un name space.
 
+Cuales es el comando para que los objetos tengan o no tengan namespaces
 
+Comando para ver los nodos
+
+Comando para ver los nodos junto con su IP y SO y kernel
+
+Comando para crear un pod (nginx)
+
+Comando para ver los pods
 
 Comando para ver los pods que hay en un namespace donde no estoy parado 
 - pasarme al default 
 - ver los pods del kube-system
 
-Cuales es el comando para que los objetos tengan o no tengan namespaces
-
-
-Comando para ver los nodos
-
-
-Comando para ver los nodos junto con su IP y SO y kernel
-
-
-Comando para crear un pod (nginx)
- 
-
-Comando para ver los pods
-
-
-Comando para esperar que sucede con los pods 
-
+Comando para esperar y visualizar que sucede con los pods 
 
 comando para ver la información ampliada de los pods
 
-
 Comando para ver los pods de todos los namespaces
-
 
 Comando para ver un pod especifico
 
+Comando para describir un pod especifico
 
 Comando para ver los logs de un pod
 
-
 Comando para ver los logs continuo de un pod
-
 
 Comando para ver los logs de un pod cuando se tienen varios contenedores
 
+Comando para ver los logs cotinuo de un pod cuando se tienen varios contenedores
 
 comando para ver un pod en formato yaml
 
-
 Comando para crear un archivo yaml para un POD desde la linea de comandos
-
 
 Comando para borrar un pod
 
-
 Comando para crear un pod desde un archivo yaml
-
 
 Comando para borrar un pod (o cualquier objeto) que se hay creado desde un archivo yaml
 
+Crear el pod del archivo yaml anterior
 
-Comando para crear un pod con variables de ambiente
+Comando para crear un archivo para un pod con variables de ambiente
 
-
-Comando para ingresar a un pod
-
+Comando para ingresar a un pod por sh y por bash
 
 Comando para crear un pod, ingresar a él y destruirlo cuando nos salimos (imagen radial/busyboxplus:curl)
