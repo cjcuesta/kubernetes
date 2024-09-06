@@ -93,9 +93,9 @@ Comando para crear un pod desde un archivo yaml
 
 Comando para borrar un pod (o cualquier objeto) que se hay creado desde un archivo yaml
 
-Crear el pod del archivo yaml anterior
-
 Comando para crear un archivo para un pod con variables de ambiente
+
+Crear el pod del archivo yaml anterior
 
 Comando para ingresar a un pod por sh y por bash
 
