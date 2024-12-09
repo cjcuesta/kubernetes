@@ -1,8 +1,24 @@
 Instalación
 https://minikube.sigs.k8s.io/docs/start/
 
+Se debe tener Docker instalado. 
+Tener kubectl instalado
+
+Descargar el Binario
+curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
+
+Instala minikube
+sudo install minikube-linux-amd64 /usr/local/bin/minikube
+
+Verifica la instalacion
+minikube version
+
 Desinstalación Minikube 
 https://stackoverflow.com/questions/66016567/how-to-uninstall-minikube-from-ubuntu-i-get-an-unable-to-load-cached-images-e 
+
+sudo rm -f /usr/local/bin/minikube
+
+rm -rf ~/.minikube
 
 First, run minikube delete to remove minikube VM (or container if run with docker driver), 
 virtual network interfaces configured on the host machine and all other traces of minikube cluster.
@@ -26,6 +42,9 @@ sudo dpkg --purge minikube
 #Start your cluster
 minikube start
 
+#Para iniciarlo con varios nodos
+minikube start --nodes=3
+
 #Para saber si se esta ejecutando
 minikube status
 
@@ -48,9 +67,21 @@ kctx minikube
 #Add a nodes to the give cluster config, and starts it.
 minikube node add --worker
 
-minikube node delete
+Para ver los nodos de minikube
+kubectl get nodes
 
 minikube node list
+
+Para borrar un nodo
+minikube node delete -n nombre_nodo
+
+Para conectarse a un nodo especifico con minikube
+minikube ssh -n nombre_nodo
+
+minikube ssh -n minikube-m02
+
+luego ya podemos ejecutar comandos docker en el nodo de minikube
+ocker@minikube-m02:~$ Docker images
 
 minikube node stop 
 
